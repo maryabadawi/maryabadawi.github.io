@@ -9,6 +9,8 @@
   --accent: #e0e7ff;     /* light indigo */
   --card: #ffffff;
   --border: #e5e7eb;
+  /* 8-point star tiles (a geometric pattern you see in Hijazi and Islamic design) */
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%234338ca' stroke-width='1'%3E%3Crect x='14' y='14' width='20' height='20'/%3E%3Crect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Dark mode colours (the 🌙 button will switch to these on Friday) */
@@ -20,6 +22,7 @@ body.dark {
   --accent: #1e293b;
   --card: #1e293b;
   --border: #334155;
+  --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23a5b4fc' stroke-width='1'%3E%3Crect x='14' y='14' width='20' height='20'/%3E%3Crect x='14' y='14' width='20' height='20' transform='rotate(45 24 24)'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * {
@@ -36,6 +39,8 @@ body {
   line-height: 1.6;
   background: var(--bg);
   color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  overflow-x: clip;           /* stops the wide pattern from causing sideways scrolling */
 }
 
 a {
@@ -85,7 +90,7 @@ nav ul a {
 }
 
 #theme-toggle {
-  background: none;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 4px 10px;
@@ -120,6 +125,103 @@ h2 {
   color: var(--muted);
   font-size: 1.15rem;
   margin-top: 0;
+}
+
+/* Intro section with the faint star pattern behind it */
+.hero {
+  position: relative;
+  padding-top: 72px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 -100vw;            /* stretch the pattern to the screen edges */
+  background-image: var(--pattern);
+  opacity: 0.12;
+  z-index: -1;
+  /* fade the pattern out towards the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent);
+  mask-image: linear-gradient(to bottom, black 40%, transparent);
+}
+
+/* Round icon links (LinkedIn, GitHub, Email) */
+.icon-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.icon-links a {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--main);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.icon-links a:hover {
+  transform: translateY(-3px) scale(1.05);
+  text-decoration: none;
+}
+
+.icon-links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.icon-links svg[fill="none"] {
+  fill: none;
+}
+
+/* Collapsible certificate groups */
+.group {
+  margin-bottom: 16px;
+}
+
+.group summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: var(--main);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.group summary::-webkit-details-marker {
+  display: none;
+}
+
+.group summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.group[open] summary::after {
+  content: "−";
+}
+
+.group .count {
+  background: var(--bg);
+  color: var(--main);
+  border-radius: 999px;
+  padding: 0 9px;
+  font-size: 0.8rem;
+}
+
+.group .cards {
+  margin-top: 16px;
 }
 
 /* Skill tags (pills) */
@@ -196,6 +298,14 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+footer p {
+  margin: 4px 0;
+}
+
+footer .updated {
+  font-size: 0.85rem;
+}
+
 /* Phones */
 @media (max-width: 600px) {
   nav {
@@ -207,8 +317,9 @@ footer {
     order: 3;
     width: 100%;
     margin: 0;
-    gap: 14px;
+    gap: 12px;
     overflow-x: auto;
+    font-size: 0.9rem;
   }
 
   #theme-toggle {
