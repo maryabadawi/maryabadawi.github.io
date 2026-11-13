@@ -9,6 +9,9 @@
 </head>
 <body>
 
+  <!-- Night sky behind the whole page (drawn by script.js) -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
   <header>
     <nav>
       <a href="#about" class="logo">Marya Badawi</a>
@@ -25,27 +28,14 @@
 
   <main>
     <section id="about" class="hero">
+      <span class="moon" aria-hidden="true"></span>
       <h1>Hi, I'm Marya.</h1>
-      <p class="tagline">Software Engineering student at UBT, Jeddah · Aspiring AI Engineer</p>
+      <p class="tagline">Senior Software Engineering student at UBT, Jeddah · Aspiring AI Engineer</p>
       <p>
-        I'm in my fourth year of Software Engineering (GPA 4.59/5). I enjoy problems that need
-        logic and patience: algorithms, software modeling and, more and more, AI.
-        I co-lead the coding team of our Game Development Club. This month I'm building my first
-        machine learning project, and in January I'll build an AI app with Python and Claude.
+        I like problems that take logic and patience to crack, and I like building things:
+        games, small tools, and now AI apps. I co-lead the coding team of our Game Development Club,
+        and I'm learning machine learning one project at a time.
       </p>
-
-      <!-- Icon links: add a CV button here once CV v2 is ready -->
-      <div class="icon-links">
-        <a href="https://www.linkedin.com/in/marya-badawi" target="_blank" aria-label="LinkedIn" title="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-        </a>
-        <a href="https://github.com/maryabadawi" target="_blank" aria-label="GitHub" title="GitHub">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        </a>
-        <a href="mailto:maryabadawi@hotmail.com" aria-label="Email" title="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-        </a>
-      </div>
     </section>
 
     <section id="skills">
@@ -77,6 +67,12 @@
           <p>A classic Snake game I built from scratch at a Game Development Club workshop (Nov 2024). Classes for the snake and food, a game loop, keyboard controls and collisions.</p>
           <div class="stack"><span>Python</span><span>Tkinter</span></div>
           <a href="https://github.com/maryabadawi/python-snake-game" target="_blank">Code on GitHub</a>
+        </article>
+        <article class="card">
+          <span class="badge">In progress</span>
+          <h3>EPITAPH</h3>
+          <p>A psychological horror game I'm building in Godot. Your choices change trust, sanity and the ending, characters will reply using Claude, and at the end the game writes your epitaph from how you played.</p>
+          <div class="stack"><span>Godot</span><span>GDScript</span><span>Claude API</span></div>
         </article>
         <!-- 26 Nov: turn this into a normal card (remove "soon", add notebook + GitHub links) -->
         <article class="card soon">
@@ -142,11 +138,19 @@
     <section id="contact">
       <h2>Contact</h2>
       <p>I'm looking for a summer 2027 training opportunity in AI or software engineering.</p>
-      <ul class="links">
-        <li><a href="mailto:maryabadawi@hotmail.com">maryabadawi@hotmail.com</a></li>
-        <li><a href="https://www.linkedin.com/in/marya-badawi" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/maryabadawi" target="_blank">GitHub</a></li>
-      </ul>
+      <!-- The only place with contact links. Add a CV button here once CV v2 is ready -->
+      <div class="icon-links">
+        <a href="https://www.linkedin.com/in/marya-badawi" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+        <a href="https://github.com/maryabadawi" target="_blank" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a href="mailto:maryabadawi@hotmail.com" id="email-link" aria-label="Email (copies the address)" title="maryabadawi@hotmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+      </div>
+      <p id="toast" role="status"></p>
     </section>
   </main>
 
