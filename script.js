@@ -129,8 +129,8 @@ function makeSky() {
   const margin = (width - CONTENT_WIDTH) / 2;
   const wide = margin >= 170;
   dim = wide ? 1 : 0.45;
-  const size = wide ? Math.min(margin - 50, height * 0.22) : Math.min(width, height) * 0.25;
-  const leftX = () => between(15, Math.max(15, margin - size - 35));
+  const size = wide ? Math.min(margin - 110, height * 0.22) : Math.min(width, height) * 0.25;
+  const leftX = () => between(15, Math.max(15, margin - size - 95)); // 95 = room for the name label
   const rightX = () => width - margin + between(20, Math.max(20, margin - size - 30));
 
   // [x, y] top-left corner for Orion, Ursa Major, Cassiopeia
