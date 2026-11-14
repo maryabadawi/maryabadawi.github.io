@@ -168,7 +168,7 @@ function draw(time) {
   }
 
   ctx.lineWidth = 1;
-  ctx.font = "11px Inter, sans-serif";
+  ctx.font = "11px 'Space Grotesk', sans-serif";
   for (const c of placed) {
     ctx.strokeStyle = `rgba(${color}, ${0.22 * strength * dim})`;
     ctx.beginPath();

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Michroma&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Michroma&display=swap");
 
 /* Colours: change these to change the whole site */
 :root {
@@ -37,7 +37,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   line-height: 1.6;
   background: var(--bg);
   color: var(--text);
@@ -131,7 +131,7 @@ section {
   scroll-margin-top: 60px;
 }
 
-/* Headings use Michroma: a wide, space-station style font (paragraphs stay in Inter so they're easy to read) */
+/* Headings use Michroma: a wide, space-station style font (everything else uses Space Grotesk: techy but easy to read) */
 h1,
 h2,
 nav .logo {
